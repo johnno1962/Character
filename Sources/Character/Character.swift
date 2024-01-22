@@ -18,7 +18,7 @@ extension Array where Element: FixedWidthInteger {
 }
 
 extension FixedWidthInteger {
-    /// Basic equality operators
+    /// Basic comparison operators
     @_transparent
     public static func == (i: Self, s: Unicode.Scalar) -> Bool {
         return i == s.value
@@ -26,6 +26,22 @@ extension FixedWidthInteger {
     @_transparent
     public static func != (i: Self, s: Unicode.Scalar) -> Bool {
         return i != s.value
+    }
+    @_transparent
+    public static func <= (i: Self, s: Unicode.Scalar) -> Bool {
+        return i <= s.value
+    }
+    @_transparent
+    public static func >= (i: Self, s: Unicode.Scalar) -> Bool {
+        return i >= s.value
+    }
+    @_transparent
+    public static func < (i: Self, s: Unicode.Scalar) -> Bool {
+        return i < s.value
+    }
+    @_transparent
+    public static func > (i: Self, s: Unicode.Scalar) -> Bool {
+        return i > s.value
     }
     /// Used in switch statements
     @_transparent
@@ -36,6 +52,23 @@ extension FixedWidthInteger {
     @_transparent
     public static func - (i: Self, s: Unicode.Scalar) -> Self {
         return i - Self(s.value)
+    }
+}
+
+extension Optional where Wrapped: FixedWidthInteger {
+    /// Basic equality operators
+    @_transparent
+    public static func == (i: Self, s: Unicode.Scalar) -> Bool {
+        return i == nil ? false : i! == s.value
+    }
+    @_transparent
+    public static func != (i: Self, s: Unicode.Scalar) -> Bool {
+        return i == nil ? true : i! != s.value
+    }
+    /// Used in switch statements
+    @_transparent
+    public static func ~= (s: Unicode.Scalar, i: Self) -> Bool {
+        return i == nil ? false : i! == s.value
     }
 }
 

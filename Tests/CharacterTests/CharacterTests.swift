@@ -19,7 +19,7 @@ final class CharacterTests: XCTestCase {
         XCTAssertEqual(c[2] - "a", 2)
         XCTAssert(c[2] == "c")
         switch c[1] {
-        case "a":
+        case "b":
             break
         default:
             XCTFail()
