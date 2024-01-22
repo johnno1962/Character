@@ -2,6 +2,7 @@
 // https://docs.swift.org/swift-book
 
 extension Array where Element: FixedWidthInteger {
+    /// Initialise array of "characters"
     @inline(__always)
     public init(unicode: String, default: UInt32 = 0) {
         self.init(unicode.map {
@@ -16,195 +17,27 @@ extension Array where Element: FixedWidthInteger {
     }
 }
 
-extension Int8 {
-    @inline(__always)
-    public static func ~= (s: Unicode.Scalar, i: Self) -> Bool {
-        return i == s.value
-    }
-    @inline(__always)
-    public static func == (i: Self, s: Unicode.Scalar) -> Bool {
-        return i == s.value
-    }
-    @inline(__always)
-    public static func != (i: Self, s: Unicode.Scalar) -> Bool {
-        return i != s.value
-    }
-    @inline(__always)
-    public static func - (i: Self, s: Unicode.Scalar) -> Self {
-        return i - Self(s.value)
-    }
-}
-
 extension UInt8: ExpressibleByUnicodeScalarLiteral {
-    @inline(__always)
+    /// UInt8 expressible by "c"
+    @_transparent
     public init(unicodeScalarLiteral value: UnicodeScalar) {
         self.init(value.value)
     }
-    @inline(__always)
-    public static func ~= (s: Unicode.Scalar, i: Self) -> Bool {
-        return i == s.value
-    }
-    @inline(__always)
-    public static func == (i: Self, s: Unicode.Scalar) -> Bool {
-        return i == s.value
-    }
-    @inline(__always)
-    public static func != (i: Self, s: Unicode.Scalar) -> Bool {
-        return i != s.value
-    }
-    @inline(__always)
-    public static func - (i: Self, s: Unicode.Scalar) -> Self {
-        return i - Self(s.value)
-    }
 }
 
-extension Int16 {
-    @inline(__always)
-    public static func ~= (s: Unicode.Scalar, i: Self) -> Bool {
-        return i == s.value
-    }
-    @inline(__always)
+extension FixedWidthInteger {
+    /// Basic comparison operator
+    @_transparent
     public static func == (i: Self, s: Unicode.Scalar) -> Bool {
         return i == s.value
     }
-    @inline(__always)
-    public static func != (i: Self, s: Unicode.Scalar) -> Bool {
-        return i != s.value
-    }
-    @inline(__always)
-    public static func - (i: Self, s: Unicode.Scalar) -> Self {
-        return i - Self(s.value)
-    }
-}
-
-extension UInt16 {
-    @inline(__always)
+    /// Used in switch statements
+    @_transparent
     public static func ~= (s: Unicode.Scalar, i: Self) -> Bool {
-        return i == s.value
+        return i == s
     }
-    @inline(__always)
-    public static func == (i: Self, s: Unicode.Scalar) -> Bool {
-        return i == s.value
-    }
-    @inline(__always)
-    public static func != (i: Self, s: Unicode.Scalar) -> Bool {
-        return i != s.value
-    }
-    @inline(__always)
-    public static func - (i: Self, s: Unicode.Scalar) -> Self {
-        return i - Self(s.value)
-    }
-}
-
-extension Int32 {
-    @inline(__always)
-    public static func ~= (s: Unicode.Scalar, i: Self) -> Bool {
-        return i == s.value
-    }
-    @inline(__always)
-    public static func == (i: Self, s: Unicode.Scalar) -> Bool {
-        return i == s.value
-    }
-    @inline(__always)
-    public static func != (i: Self, s: Unicode.Scalar) -> Bool {
-        return i != s.value
-    }
-    @inline(__always)
-    public static func - (i: Self, s: Unicode.Scalar) -> Self {
-        return i - Self(s.value)
-    }
-}
-
-extension UInt32 {
-    @inline(__always)
-    public static func ~= (s: Unicode.Scalar, i: Self) -> Bool {
-        return i == s.value
-    }
-    @inline(__always)
-    public static func == (i: Self, s: Unicode.Scalar) -> Bool {
-        return i == s.value
-    }
-    @inline(__always)
-    public static func != (i: Self, s: Unicode.Scalar) -> Bool {
-        return i != s.value
-    }
-    @inline(__always)
-    public static func - (i: Self, s: Unicode.Scalar) -> Self {
-        return i - Self(s.value)
-    }
-}
-
-extension Int64 {
-    @inline(__always)
-    public static func ~= (s: Unicode.Scalar, i: Self) -> Bool {
-        return i == s.value
-    }
-    @inline(__always)
-    public static func == (i: Self, s: Unicode.Scalar) -> Bool {
-        return i == s.value
-    }
-    @inline(__always)
-    public static func != (i: Self, s: Unicode.Scalar) -> Bool {
-        return i != s.value
-    }
-    @inline(__always)
-    public static func - (i: Self, s: Unicode.Scalar) -> Self {
-        return i - Self(s.value)
-    }
-}
-
-extension UInt64 {
-    @inline(__always)
-    public static func ~= (s: Unicode.Scalar, i: Self) -> Bool {
-        return i == s.value
-    }
-    @inline(__always)
-    public static func == (i: Self, s: Unicode.Scalar) -> Bool {
-        return i == s.value
-    }
-    @inline(__always)
-    public static func != (i: Self, s: Unicode.Scalar) -> Bool {
-        return i != s.value
-    }
-    @inline(__always)
-    public static func - (i: Self, s: Unicode.Scalar) -> Self {
-        return i - Self(s.value)
-    }
-}
-
-extension Int {
-    @inline(__always)
-    public static func ~= (s: Unicode.Scalar, i: Self) -> Bool {
-        return i == s.value
-    }
-    @inline(__always)
-    public static func == (i: Self, s: Unicode.Scalar) -> Bool {
-        return i == s.value
-    }
-    @inline(__always)
-    public static func != (i: Self, s: Unicode.Scalar) -> Bool {
-        return i != s.value
-    }
-    @inline(__always)
-    public static func - (i: Self, s: Unicode.Scalar) -> Self {
-        return i - Self(s.value)
-    }
-}
-
-extension UInt {
-    @inline(__always)
-    public static func ~= (s: Unicode.Scalar, i: Self) -> Bool {
-        return i == s.value
-    }
-    @inline(__always)
-    public static func == (i: Self, s: Unicode.Scalar) -> Bool {
-        return i == s.value
-    }
-    @inline(__always)
-    public static func != (i: Self, s: Unicode.Scalar) -> Bool {
-        return i != s.value
-    }
-    @inline(__always)
+    /// Maybe useful now and then
+    @_transparent
     public static func - (i: Self, s: Unicode.Scalar) -> Self {
         return i - Self(s.value)
     }
