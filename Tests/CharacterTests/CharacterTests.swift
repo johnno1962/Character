@@ -11,14 +11,14 @@ final class CharacterTests: XCTestCase {
         
         let a: UInt8 = "a"
         let b: [UInt8] = ["a", "b", "c"]
-        let c = [Int8](unicode: "abc")
         XCTAssertEqual(a, "a")
+        let c = [Int8](unicode: "abc")
         XCTAssertFalse(a != "a")
         XCTAssert(b[1] == c[1])
         XCTAssert(b == ["a", "b", "c"])
         XCTAssertEqual(c[2] - "a", 2)
         XCTAssert(c[2] == "c")
-        switch a {
+        switch c[1] {
         case "a":
             break
         default:

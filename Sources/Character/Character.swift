@@ -18,9 +18,18 @@ extension Array where Element: FixedWidthInteger {
 }
 
 extension FixedWidthInteger {
-    /// Basic comparison operator (!= and ~= are implied)
+    /// Basic equality operators
     @_transparent
     public static func == (i: Self, s: Unicode.Scalar) -> Bool {
+        return i == s.value
+    }
+    @_transparent
+    public static func != (i: Self, s: Unicode.Scalar) -> Bool {
+        return i != s.value
+    }
+    /// Used in switch statements
+    @_transparent
+    public static func ~= (s: Unicode.Scalar, i: Self) -> Bool {
         return i == s.value
     }
     /// Maybe useful now and then
