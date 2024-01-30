@@ -19,37 +19,37 @@ extension Array where Element: FixedWidthInteger {
 
 extension FixedWidthInteger {
     /// Basic comparison operators
-    @inline(__always)
+    @_transparent
     public static func == (i: Self, s: Unicode.Scalar) -> Bool {
         return i == s.value
     }
-    @inline(__always)
+    @_transparent
     public static func != (i: Self, s: Unicode.Scalar) -> Bool {
         return i != s.value
     }
-    @inline(__always)
+    @_transparent
     public static func <= (i: Self, s: Unicode.Scalar) -> Bool {
         return i <= s.value
     }
-    @inline(__always)
+    @_transparent
     public static func >= (i: Self, s: Unicode.Scalar) -> Bool {
         return i >= s.value
     }
-    @inline(__always)
+    @_transparent
     public static func < (i: Self, s: Unicode.Scalar) -> Bool {
         return i < s.value
     }
-    @inline(__always)
+    @_transparent
     public static func > (i: Self, s: Unicode.Scalar) -> Bool {
         return i > s.value
     }
     /// Used in switch statements
-    @inline(__always)
+    @_transparent
     public static func ~= (s: Unicode.Scalar, i: Self) -> Bool {
         return i == s.value
     }
     /// Maybe useful now and then
-    @inline(__always)
+    @_transparent
     public static func - (i: Self, s: Unicode.Scalar) -> Self {
         return i - Self(s.value)
     }
@@ -57,16 +57,16 @@ extension FixedWidthInteger {
 
 extension Optional where Wrapped: FixedWidthInteger {
     /// Basic equality operators
-    @inline(__always)
+    @_transparent
     public static func == (i: Self, s: Unicode.Scalar) -> Bool {
         return i == nil ? false : i! == s.value
     }
-    @inline(__always)
+    @_transparent
     public static func != (i: Self, s: Unicode.Scalar) -> Bool {
         return i == nil ? true : i! != s.value
     }
     /// Used in switch statements
-    @inline(__always)
+    @_transparent
     public static func ~= (s: Unicode.Scalar, i: Self) -> Bool {
         return i == nil ? false : i! == s.value
     }
